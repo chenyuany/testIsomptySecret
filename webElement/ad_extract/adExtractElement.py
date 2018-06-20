@@ -14,8 +14,6 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-import time
-
 sys.path.append("/testIsompSecret/common/")
 from _initDriver import *
 from _icommon import getElement,selectElement,frameElement,commonFun,tableElement
@@ -268,7 +266,6 @@ class AdExtractPage():
     u'''点击立即发现'''
     def click_find_immdiate(self):
         try:
-            time.sleep(1)
             self.getElem.find_element_with_wait_clickable_and_click("id",self.FIND_IMMDIATE)
         except Exception as e:
             print ("Click find immdiate error: ") + str(e)
@@ -432,8 +429,7 @@ class AdExtractPage():
     def quartz_tab(self):
         try:
             self.frameElem.from_frame_to_otherFrame("mainFrame")
-            self.getElem.find_element_with_wait_clickable_and_click("id",\
-            self.QUARTZ_TAB)
+            self.getElem.find_element_with_wait_clickable_and_click("id",self.QUARTZ_TAB)
         except Exception as e:
             print ("Click quartz tab button error: ") + str(e)
     

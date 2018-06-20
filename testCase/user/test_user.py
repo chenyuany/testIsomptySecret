@@ -10,7 +10,7 @@ u'''
 #修改日期：
 #修改内容：
 '''
-import sys
+import sys,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -88,8 +88,10 @@ class User():
 	
 	u'''切换至用户模块'''
 	def switch_to_user_module(self):
+		time.sleep(2)
 		self.frameElem.switch_to_content()
 		self.frameElem.switch_to_top()
+		time.sleep(1)
 		self.cmf.select_menu(u"运维管理")
 		self.cmf.select_menu(u"运维管理",u"用户")	
 
@@ -140,7 +142,6 @@ class User():
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
-
 					self.frameElem.from_frame_to_otherFrame("mainFrame")
 
 					self.user.operate_edit(data[2])

@@ -9,7 +9,7 @@
 #修改日期：
 #修改内容：
 '''
-import sys
+import sys,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -133,7 +133,7 @@ class testWindowsResource(object):
 					self.cmf.test_win_check_point("xpath", windowsMsg, data, flag)
 			except Exception as e:
 				print ("check_windows_resource fail:" + str(e))
-
+		time.sleep(5)
 		self.cmf.back()
 
 		self.log.log_end("check_windows_resource")

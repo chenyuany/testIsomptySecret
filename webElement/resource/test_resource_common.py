@@ -134,9 +134,6 @@ class Resource(object):
 			self.frameElem.from_frame_to_otherFrame("mainFrame")
 			self.getElem.find_element_wait_and_clear('id', self.RESOURCE_IP)
 			self.getElem.find_element_wait_and_sendkeys('id', self.RESOURCE_IP, ipdress)
-			time.sleep(3)
-			self.getElem.find_element_wait_and_click_EC("id", "spanid")
-			self.getElem.find_element_with_wait_EC("classname", "ip_succ")
 			time.sleep(5)
 		except Exception as e:
 			print "resourceip is error :" + str(e)
@@ -361,6 +358,18 @@ class Resource(object):
 	def click_save_button(self):
 		try:
 			self.frameElem.from_frame_to_otherFrame("mainFrame")
+			time.sleep(3)
+			self.getElem.find_element_wait_and_click_EC("id", self.SAVE_BUTTON)
+		except Exception as e:
+			print "resource save button error:" + str(e)
+
+	u'''点击保存按钮'''
+	def resoure_save_button(self):
+		try:
+			self.frameElem.from_frame_to_otherFrame("mainFrame")
+			time.sleep(6)
+			self.getElem.find_element_wait_and_click_EC("id", "spanid")
+			self.getElem.find_element_with_wait_EC("classname", "ip_succ")
 			self.getElem.find_element_wait_and_click_EC("id", self.SAVE_BUTTON)
 		except Exception as e:
 			print "resource save button error:" + str(e)
@@ -387,7 +396,9 @@ class Resource(object):
 	u'''勾选部门子节点查询'''
 	def click_child_node(self):
 		self.frameElem.from_frame_to_otherFrame("mainFrame")
+		time.sleep(1)
 		self.getElem.find_element_wait_and_click_EC('id', "resource_department_name")
+		time.sleep(1)
 		self.getElem.find_element_wait_and_click_EC("id", "query_child_node")
 
 	u'''查询部门清空'''
@@ -510,6 +521,7 @@ class Resource(object):
 					if spanclass == "button level1 switch bottom_close" or spanclass == "button level1 switch center_close":
 						#开启闭合状态
 						self.getElem.find_element_wait_and_click_EC("id", spanid)
+						time.sleep(2)
 						#循环开启闭合状态下的a标签进行选择资源类型
 						click_resource_type = self.two_level_tree_cycle(reName)
 						#判断返回的类型是否为True
@@ -525,11 +537,11 @@ class Resource(object):
 	def select_depart_common(self, idname, swithid, deptname):
 		try:
 			self.frameElem.from_frame_to_otherFrame("mainFrame")
-			self.driver.implicitly_wait(10)
+			time.sleep(1)
 			self.getElem.find_element_wait_and_click_EC('id', idname)
-			self.driver.implicitly_wait(10)
+			time.sleep(2)
 			self.getElem.find_element_wait_and_click_EC('id', swithid)
-			self.driver.implicitly_wait(10)
+			time.sleep(2)
 
 			#获取所有a标签的对象
 			elems = self.driver.find_elements_by_tag_name("a")
@@ -566,6 +578,7 @@ class Resource(object):
 
 				#判断所选择的的资源类型和a标签的title是否相等
 				if atext == reName:
+					time.sleep(2)
 					self.getElem.find_element_wait_and_click_EC("id", aid)
 					#一个标志已经点击资源类型
 					return True

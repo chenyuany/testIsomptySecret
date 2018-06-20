@@ -48,7 +48,7 @@ class UseAuthSuite(unittest.TestCase):
         #上传授权码
         # self.useAuthCase.add_product_information_005()
         #上传授权码校验
-        self.useAuthCase.check_updata_auth_006()
+        # self.useAuthCase.check_updata_auth_006()
         
     def tearDown(self):
         self.commonSuite.user_quit()

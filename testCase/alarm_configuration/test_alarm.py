@@ -10,7 +10,7 @@ u'''
 #修改日期：
 #修改内容：
 '''
-import sys
+import sys,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -65,6 +65,7 @@ class AlarmConfig():
     
     u'''切换至告警策略模块'''
     def switch_to_alarm_module(self):
+        time.sleep(1)
         self.frameElem.switch_to_content()
         self.frameElem.switch_to_top()
         self.cmf.select_menu(u"策略配置")
@@ -108,7 +109,6 @@ class AlarmConfig():
             try:
             #如果不是第一行标题，则读取数据
                 if dataRow != 0:
-                    self.switch_to_alarm_module()
                     self.frameElem.from_frame_to_otherFrame("mainFrame")
                     self.alarm.click_left_config_test()
                     self.alarm.click_command_alarm_menu()
@@ -182,6 +182,7 @@ class AlarmConfig():
             try:
             #如果不是第一行标题，则读取数据
                 if dataRow != 0:
+                    self.switch_to_alarm_module()
                     self.frameElem.from_frame_to_otherFrame("mainFrame")
                     self.alarm.click_left_config_test()
                     self.alarm.click_default_alarm_menu()

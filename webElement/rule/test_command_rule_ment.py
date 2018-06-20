@@ -38,6 +38,7 @@ class CommandRule(object):
 	   - statu:左边框点击，0代表点击命令规则，1代表点击时间规则，2代表点击地址规则，3代表点击资源时间规则
 	'''
 	def click_left_rule(self, statu):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("leftFrame")
 		if statu == 0:
 			#点击命令规则

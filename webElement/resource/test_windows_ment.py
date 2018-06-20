@@ -89,7 +89,11 @@ class WindowsResource(object):
 		#BaseDN
 		if data[15] != 'no':
 			self.set_base_dn(data[15])
-		self.resource.click_save_button()
+
+		if data[5] != 'no':
+			self.resource.resoure_save_button()
+		else:
+			self.resource.click_save_button()
 
 	u'''校验windows资源
 	   Parameters:
@@ -117,7 +121,7 @@ class WindowsResource(object):
 			self.select_account_type(data[6])
 		if datarow == 13:
 			self.select_attach_domian(data[7])
-		self.resource.click_save_button()
+		self.resource.resoure_save_button()
 
 	u'''填写windows域名
 	   parameter:

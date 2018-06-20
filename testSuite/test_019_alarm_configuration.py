@@ -38,10 +38,10 @@ class TestAlarmSuite(unittest.TestCase):
     def test_alarm(self):
         #为用户添加邮箱
         self.alarmCase.mod_user_mail_008()
-        #配置高危运维
-        self.alarmCase.command_alarm_level_config_001()
         #运行状态告警校验
         self.alarmCase.default_alarm_level_checkout_003()
+        #配置高危运维
+        self.alarmCase.command_alarm_level_config_001()
         #配置运行状态告警
         self.alarmCase.default_alarm_level_config_002()
         #配置认证失败告警

@@ -159,6 +159,7 @@ class UserPage():
     u'''点击重置按钮'''
     def click_reset_button(self):
         try:
+            time.sleep(2)
             self.getElem.find_element_with_wait_clickable_and_click('id',self.RESRT_BUTTON)
         except Exception as e:
             print ("click reset button error: ") + str(e)
@@ -223,6 +224,7 @@ class UserPage():
     def user_operate_list(self,account,index):
         row = self.cmf.find_row_by_name(account, "fortUserAccount")
         update_xpath = "//table[@id='content_table']/tbody/tr[" + str(row) + "]/td[9]/input[" + index + "]"
+        time.sleep(1)
         self.getElem.find_element_with_wait_clickable_and_click('xpath',update_xpath)
     
     u'''删除指定的用户
@@ -413,9 +415,11 @@ class UserPage():
     def select_depmt_common(self,input_id,deptname):
         self.frameElem.from_frame_to_otherFrame("mainFrame")
         self.getElem.find_element_wait_and_click_EC("id",input_id)
+        time.sleep(1)
         #点开部门箭头
         if self.get_element_attribute() != "open":
             self.getElem.find_element_wait_and_click_EC('id','tree_1_switch')
+        time.sleep(2)
         self.get_tag_by_a(deptname)
         
     u'''用户部门'''
@@ -492,6 +496,7 @@ class UserPage():
     '''
     def click_checkbox(self,value):
         try:
+            time.sleep(2)
             checkbox = self.getElem.find_element_with_wait_EC("id",value)
             if checkbox.is_selected() == False:
                 checkbox.click()
@@ -667,6 +672,7 @@ class UserPage():
         
         try:
             self.getElem.find_element_with_wait_clickable_and_click("id",self.CREATE_CERT)
+            time.sleep(3)
             
         except Exception as e:
             print ("click create button error: ") + str(e)
@@ -723,7 +729,7 @@ class UserPage():
     '''
     def set_user_basic_info(self,data,roleText):
         self.cmf.select_menu(u"运维管理")
-        self.cmf.select_menu(u"运维管理",u"用户")			
+        self.cmf.select_menu(u"运维管理",u"用户")
         self.frameElem.from_frame_to_otherFrame("mainFrame")
         self.add_button()
         self.set_user_account(data[2])

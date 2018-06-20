@@ -142,7 +142,7 @@ class testDatabaseResource(object):
 					if data[7] !="":
 						self.database.select_application(data[7])
 					
-					self.resource.click_save_button()
+					self.resource.resoure_save_button()
 					self.frameElem.switch_to_content()
 					self.cmf.test_win_check_point("xpath", windowsMsg, data, flag)
 					

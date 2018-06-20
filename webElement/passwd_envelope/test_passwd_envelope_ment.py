@@ -74,6 +74,7 @@ class EnvelopePage(object):
     u'''同步操作'''
     def envelope_sync(self):
         try:
+            time.sleep(2)
             self.frameElem.from_frame_to_otherFrame("rigthFrame")
             self.getElem.find_element_wait_and_click_EC("id", self.IMAGESELECT)
             time.sleep(3)

@@ -200,6 +200,7 @@ class Backuprestore(object):
 
 	u'''点击立刻备份'''
 	def click_backup_immediately(self):
+		time.sleep(3)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		self.getElem.find_element_wait_and_click_EC("id", "back_up_now")
 
@@ -213,6 +214,7 @@ class Backuprestore(object):
 			- staut:0代表系统备份还原，1代表查看备份文件
 	'''
 	def select_backup_menu(self, staut):
+		time.sleep(3)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		if staut == 0:
 			self.getElem.find_element_wait_and_click_EC("id", "tit1")
@@ -225,6 +227,7 @@ class Backuprestore(object):
 			- value:1代表下载，2代表删除，3代表还原
 	'''
 	def click_operat_file(self,filename, value):
+		time.sleep(2)
 
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		row = 1
@@ -293,11 +296,13 @@ class Backuprestore(object):
 
 	u'''点击syslog保存'''
 	def click_syslog_save(self):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		self.getElem.find_element_wait_and_click_EC("id", "save_syslog")
 
 	u'''获取syslogip值'''
 	def get_syslog_port(self):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		selem = self.getElem.find_element_with_wait_EC("id", "port")
 		value = selem.get_attribute("value")
@@ -305,6 +310,7 @@ class Backuprestore(object):
 
 	u'''获取文件名称'''
 	def get_file_name(self):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		selem = self.getElem.find_element_with_wait_EC("xpath", ".//*[@id='content_rt02']/div/table/tbody/tr[2]")
 		value = selem.get_attribute('id')
@@ -316,7 +322,7 @@ class Backuprestore(object):
 			- port:端口
 	'''
 	def set_syslog(self, port, ip='no'):
-		time.sleep(3)
+		time.sleep(2)
 		self.comsuit.switch_to_moudle(u'系统配置', u'关联服务')
 		self.command.click_left_rule(1)
 		if ip != 'no':
@@ -332,6 +338,7 @@ class Backuprestore(object):
 			- checklog:检验信息
 	'''
 	def check_syslog_content(self, port, checklog):
+		time.sleep(2)
 		self.comsuit.switch_to_moudle(u'系统配置', u'关联服务')
 		self.command.click_left_rule(1)
 		elemText = self.get_syslog_port()
@@ -349,6 +356,8 @@ class Backuprestore(object):
 		return：定位该名称位于第几行
 	'''
 	def check_content(self,namevalue, name, checklog):
+		time.sleep(2)
+		self.cmf.select_menu(u"运维管理", u"用户")
 		row = self.cmf.find_row_by_name(namevalue, name)
 		if row != 0:
 			self.log.log_detail(checklog, True)
@@ -363,6 +372,7 @@ class Backuprestore(object):
 			agpwd : 确认密码
 	'''
 	def set_user_info(self, account, name, pwd, agpwd):
+		time.sleep(1)
 		self.comsuit.switch_to_moudle(u"运维管理", u"用户")
 		self.frameElem.from_frame_to_otherFrame("mainFrame")
 		self.userElem.add_button()
@@ -379,6 +389,7 @@ class Backuprestore(object):
 			- account : 用户账号
 	'''
 	def del_user_info(self, account):
+		time.sleep(1)
 		self.comsuit.switch_to_moudle(u"运维管理", u"用户")
 		self.frameElem.from_frame_to_otherFrame("mainFrame")
 		self.userElem.operate_delete(account)
@@ -408,6 +419,7 @@ class Backuprestore(object):
 			- stauts :状态1代表执行操作列按钮2代表进行上传后操作列按钮
 	'''
 	def execute_restore(self, filename, loginfo, stauts=1):
+		time.sleep(2)
 		self.comsuit.switch_to_moudle(u'系统配置', u'备份还原')
 		self.command.click_left_rule(0)
 		self.select_backup_menu(1)
@@ -415,10 +427,10 @@ class Backuprestore(object):
 			self.click_operat_file(filename, 3)
 		elif stauts == 2:
 			self.upload_click_operat_file(filename, 3)
-		time.sleep(8)
+		time.sleep(10)
 		self.frameElem.switch_to_content()
+		time.sleep(10)
 		self.getElem.find_element_with_wait_EC("classname", "aui_state_highlight")
-		time.sleep(5)
 		self.cmf.click_msg_button(1)
 		self.log.log_detail(loginfo, True)
 
@@ -429,6 +441,7 @@ class Backuprestore(object):
 			- flag :无检查点的测试项标识，如果为True说明通过
 	'''
 	def config_backup(self, data, backMsg, flag):
+		time.sleep(2)
 		self.comsuit.switch_to_moudle(u'系统配置', u'备份还原')
 		self.command.click_left_rule(0)
 		self.check_config(data[12])
@@ -440,7 +453,7 @@ class Backuprestore(object):
 		self.frameElem.switch_to_content()
 		self.cmf.test_win_check_point("xpath", backMsg, data, flag)
 		self.click_backup_immediately()
-		time.sleep(2)
+		time.sleep(3)
 		self.frameElem.switch_to_content()
 		self.cmf.click_msg_button(1)
 		self.log.log_detail(data[9], True)
@@ -457,7 +470,7 @@ class Backuprestore(object):
 		fxpath = "//iframe[@hidefocus='true']"
 		# 日期控件table的xpath路径
 		txpath = "/html/body/div/div[3]/table"
-		status = self.cnEn.is_float('1')
+		status = self.cnEn.is_float('0')
 		type = self.cnEn.is_float(types)
 		# 转成datetime对象
 		date = datetime(*xldate_as_tuple(backuptime, 0))
@@ -474,6 +487,7 @@ class Backuprestore(object):
 			- type：t代表今天，c代表clear，q代表确定，默认选择今天
 	'''
 	def option_time(self,wdateId,fxpath,status='0',type='t',txpath = None,dtime = None):
+		time.sleep(2)
 		self.getElem.find_element_wait_and_click("id",wdateId)
 		frame = self.driver.find_element_by_xpath(fxpath)
 		self.driver.switch_to_frame(frame)
@@ -509,6 +523,7 @@ class Backuprestore(object):
 				#设定年
 				dTitle[1].clear()
 				dTitle[1].send_keys(tYear)
+				time.sleep(2)
 				self.frameElem.from_frame_to_otherFrame("rigthFrame")
 				self.getElem.find_element_wait_and_click_EC("id", "backUpTime")
 				self.driver.switch_to_frame(frame)
@@ -536,6 +551,7 @@ class Backuprestore(object):
 
 								#如果跟给定的日期一致，点击日期
 								if int(ct) == int(tDay):
+									time.sleep(2)
 									self.tableElem.get_table_cell_text(txpath,itr,itd)[1].click()
 									iStatus = True
 									break
@@ -564,10 +580,12 @@ class Backuprestore(object):
 	'''
 	def backup_file_upload(self, filename, loginfo):
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
-		value = "C:\Users\Administrator\Downloads\\" + filename+""
+		value = "C:\Users\圆圆\Downloads\\" + filename+""
+		time.sleep(1)
 		self.getElem.find_element_wait_and_sendkeys("id", "backUpFile", value)
 		time.sleep(2)
 		self.getElem.find_element_wait_and_click_EC("id", "up_file")
+		time.sleep(5)
 		self.frameElem.switch_to_content()
 		self.cmf.click_msg_button(1)
 		time.sleep(1)

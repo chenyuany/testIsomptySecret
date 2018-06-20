@@ -96,7 +96,7 @@ class SyslogService():
             try:
                 #如果不是第一行标题，则读取数据
                 if dataRow != 0:
-                    time.sleep(1)
+
                     self.frameElem.from_frame_to_otherFrame("rigthFrame")
                     if dataRow == 1:               
                         self.syslog.change_switch_status()

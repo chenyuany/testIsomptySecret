@@ -316,10 +316,12 @@ class CommonSuiteData():
                 data[3]:部门
     '''
     def set_resource_info(self,data):
+        time.sleep(2)
         self.switch_to_moudle(u"运维管理",u"资源")
         self.frameElem.from_frame_to_otherFrame("mainFrame")
         self.resource.click_add_edit_button()
         self.resource.select_resource_type(data[0])
+        time.sleep(2)
         self.resource.set_resource_name(data[1])
         self.resource.set_resource_ip(data[2])
         if data[3] != 'no':
@@ -355,7 +357,6 @@ class CommonSuiteData():
         self.resource.click_save_button()
         self.cmf.click_login_msg_button()
         time.sleep(3)
-#        self.driver.implicitly_wait(3)
         self.cmf.back()
     
     u'''填写数据库基本信息'''
@@ -516,6 +517,7 @@ class CommonSuiteData():
     
     u'''添加用户数据模板'''
     def add_user_data_module(self,rowList):
+        time.sleep(2)
         self.switch_to_moudle(u"运维管理",u"用户")
         user_data = self.get_table_data("add_user")
         for dataRow in rowList:
@@ -786,12 +788,12 @@ class CommonSuiteData():
     u'''删除用户数据模板'''
     def del_user_data_module(self,rowList):
         self.switch_to_moudle(u"运维管理", u"用户")
+        time.sleep(2)
         self.frameElem.from_frame_to_otherFrame("mainFrame")
         user_data = self.get_table_data("add_user")
         for dataRow in rowList:
             data = user_data[dataRow]
             if dataRow != 0:
-                self.switch_to_moudle(u"运维管理", u"用户")
                 self.userElem.operate_delete(data[1])
                 self.frameElem.switch_to_content()
                 self.cmf.click_login_msg_button()
@@ -834,6 +836,7 @@ class CommonSuiteData():
 
     u'''删除资源数据模板'''
     def del_resource_modele(self,rowList):
+        time.sleep(2)
         self.switch_to_moudle(u"运维管理", u"资源")
         self.frameElem.from_frame_to_otherFrame("mainFrame")
         res_data = self.get_table_data("add_res")
@@ -1005,7 +1008,6 @@ class CommonSuiteData():
         self.login_secadmin()
         self.add_user_data_module([11])
         self.switch_to_moudle(u"策略配置",u"认证强度")
-        self.frameElem.from_frame_to_otherFrame("mainFrame")
 
     u'''认证方式后置条件'''
     def auth_method_post_condition(self):
@@ -1072,15 +1074,8 @@ class CommonSuiteData():
     def linuxre_module_prefix_condition(self):
         #使用安全保密管理员登录
         self.login_secadmin()
-        #添加密码策略
-        self.add_strategy_data_module([1])
         #切换到资源
         self.switch_to_moudle(u"运维管理", u"资源")
-
-    def linuxre_module_post_condition(self):
-        #删除密码策略
-        self.del_strategy_data_module([1])
-        self.user_quit()
 
 #------------------------------network资源前置条件-----------------------------------
     def networkre_module_prefix_condition(self):
@@ -1093,15 +1088,8 @@ class CommonSuiteData():
     def windowre_module_prefix_condition(self):
         #使用安全保密管理员登录
         self.login_secadmin()
-        #添加密码策略
-        self.add_strategy_data_module([2])
         #切换到资源
         self.switch_to_moudle(u"运维管理", u"资源")
-
-    def windowre_module_post_condition(self):
-        #删除密码策略
-        self.del_strategy_data_module([2])
-        self.user_quit()
 
 #-----------------------------数据库前置条件----------------------------------
     def database_resource_prefix_condition(self):

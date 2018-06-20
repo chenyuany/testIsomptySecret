@@ -266,13 +266,16 @@ class AlarmPage():
     u'''勾选mail按钮'''
     def mail_check(self):
         try:
+            time.sleep(2)
             self.getElem.find_element_with_wait_clickable_and_click('id',self.MAIL_CHECK)
+            time.sleep(2)
         except Exception as e:
             print ("mail mail error: ") + str(e)
     
     u'''点击邮件添加按钮'''
     def click_illegal_command_receive_user(self):
         try:
+            time.sleep(2)
             self.getElem.find_element_with_wait_clickable_and_click('id',self.COMMAND_RECEIVE_USER)
         except Exception as e:
             print ("click mail recipient error: ") + str(e)
@@ -292,6 +295,7 @@ class AlarmPage():
                 memoryValue : mem百分比option的value值(5代表50%)
     '''    
     def memory_alarm_select(self,memoryValue):
+        time.sleep(2)
         return self.user.set_common_select_elem(memoryValue,self.MEM_SELECT)
     
     u'''磁盘设置百分比
@@ -299,6 +303,7 @@ class AlarmPage():
                 diskValue : disk百分比option的value值(5代表50%)
     '''    
     def disk_alarm_select(self,diskValue):
+        time.sleep(1)
         return self.user.set_common_select_elem(diskValue,self.DISK_SELECT)
     
     u'''cpu设置百分比
@@ -306,6 +311,7 @@ class AlarmPage():
                 cpuValue : cpu百分比option的value值(5代表50%)
     '''    
     def cpu_alarm_select(self,cpuValue):
+        time.sleep(1)
         return self.user.set_common_select_elem(cpuValue,self.CPU_SELECT)
     
     u'''检测周期
@@ -313,6 +319,7 @@ class AlarmPage():
                 testValue : 检测周期option的value值(5代表5秒)
     '''    
     def test_cycle_select(self,testValue):
+        time.sleep(2)
         return self.user.set_common_select_elem(testValue,self.TEST_SELECT)
     
     u'''默认告警级别
@@ -320,11 +327,13 @@ class AlarmPage():
                 defaultValue : 默认告警级别option的value值(5代表级别5)
     '''    
     def default_alarm_level_select(self,defaultValue):
+        time.sleep(2)
         return self.user.set_common_select_elem(defaultValue,self.DEF_ALR_LEVEL_SELECT)
    
     u'''勾选syslog按钮'''
     def run_syslog_check(self):
         try:
+            time.sleep(2)
             self.getElem.find_element_with_wait_clickable_and_click('id',self.RUN_SYSLOG_CHECK)
         except Exception as e:
             print ("Check syslog run error: ") + str(e)
@@ -332,6 +341,7 @@ class AlarmPage():
     u'''勾选mail按钮'''
     def run_mail_check(self):
         try:
+            time.sleep(2)
             self.getElem.find_element_with_wait_clickable_and_click('id',self.RUN_MAIL_CHECK)
         except Exception as e:
             print ("Check mail run error: ") + str(e)
@@ -339,6 +349,7 @@ class AlarmPage():
     u'''选择邮件接收人添加按钮'''
     def system_state_receive_user(self):
         try:
+            time.sleep(2)
             self.getElem.find_element_with_wait_clickable_and_click('id',self.SYSTEM_STATE_RECEIVE_USER)
         except Exception as e:
             print ("Select the system mail recipient error: ") + str(e)
@@ -367,6 +378,7 @@ class AlarmPage():
                 repeatValue : 重复事件option的value值(10代表10次)
                     '''
     def repeat_times_select(self,repeatValue):
+        time.sleep(2)
         return self.user.set_common_select_elem(repeatValue,self.TIME_SELECT)
     
     u'''升级事件告警级别
@@ -374,6 +386,7 @@ class AlarmPage():
                 updateValue : 升级告警级别option的value值(6代表等级6)
                     '''
     def defaultA_alarm_update_elect(self,updateValue):
+        time.sleep(2)
         return self.user.set_common_select_elem(updateValue,self.DEF_UPDATE_SELECT)
     
 #---------------------------------认证异常--------------------------------------------------

@@ -78,8 +78,8 @@ class testClient():
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0 :
+
 					self.frameElem.from_frame_to_otherFrame("mainFrame")
-					
 					self.clientElem.select_query_res_type(data[2],data[3])
 					self.clientElem.click_query_button()
 					self.clientElem.add_button()
@@ -152,6 +152,7 @@ class testClient():
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0 :
+
 					self.frameElem.from_frame_to_otherFrame("mainFrame")
 					
 					self.clientElem.set_client_name(data[4])
@@ -184,6 +185,7 @@ class testClient():
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0 :
+
 					self.frameElem.from_frame_to_otherFrame("mainFrame")
 					
 					self.clientElem.select_query_res_type(data[2],data[3])

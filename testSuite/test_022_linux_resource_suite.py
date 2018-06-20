@@ -63,7 +63,7 @@ class testLinuxResourceSuite(unittest.TestCase):
 
 	def tearDown(self):
 
-		self.comsuit.linuxre_module_post_condition()
+		self.comsuit.user_quit()
 		initDriver().close_driver(self.browser)
 
 if __name__ == "__main__":

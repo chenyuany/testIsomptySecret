@@ -68,7 +68,7 @@ class LinuxResource(object):
 			self.resource.set_super_pwd(data[13])
 			#确认口令
 			self.resource.set_super_confirm_pwd(data[14])
-		self.resource.click_save_button()
+		self.resource.resoure_save_button()
 
 	u'''校验Linux资源
 	   Parameters:
@@ -102,7 +102,7 @@ class LinuxResource(object):
 			if data[7] != 'no':
 				self.resource.set_super_confirm_pwd(data[7])
 			self.resource.set_super_prompt()
-		self.resource.click_save_button()
+		self.resource.resoure_save_button()
 
 	u'''添加资源账号
 	   Parameters:

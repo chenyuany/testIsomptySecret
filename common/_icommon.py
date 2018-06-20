@@ -570,8 +570,9 @@ class frameElement(object):
             - frameName:要跳转到的frame的名字      
     '''
     def from_frame_to_otherFrame(self,frameName):
+        time.sleep(2)
         self.switch_to_content()
-        
+        time.sleep(1)
         if frameName == "mainFrame":
             #定位到mainFrame
             self.switch_to_main()
@@ -597,7 +598,6 @@ class frameElement(object):
             self.switch_to_rigth()
         elif frameName == "artIframe":
             self.switch_to_artIframe()
-        
 
 #table元素
 class tableElement(object):
@@ -1059,8 +1059,8 @@ class commonFun(object):
        return：定位该名称位于第几行
     '''
     def find_row_by_name(self, namevalue, name):
-        self.frameElem.switch_to_content()
-        self.frameElem.switch_to_main()
+        time.sleep(2)
+        self.frameElem.from_frame_to_otherFrame("mainFrame")
         row = 0
         try:
             if self.is_namevalue_exsit(namevalue, name):

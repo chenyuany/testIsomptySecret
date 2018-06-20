@@ -73,7 +73,7 @@ class testRegroup(object):
 					self.regroup.regroup_click_basic_operation(int(data[4]), data[2], data[3])
 					self.dptment.popup_sendkey(data[5])
 					self.dptment.click_ok_button()
-					time.sleep(3)
+					time.sleep(2)
 					self.frameElem.switch_to_content()
 					self.dptment.multil_div_check_point("xpath", regrMsg, data, flag, pagetext)
 			except Exception as e:
@@ -99,6 +99,7 @@ class testRegroup(object):
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
+					time.sleep(2)
 					self.regroup.regroup_click_basic_operation(int(data[4]), data[2], data[3])
 					self.log.log_detail(data[0], True)
 			except Exception as e:
@@ -129,6 +130,7 @@ class testRegroup(object):
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
+					time.sleep(2)
 					self.regroup.regroup_click_up_down_check(int(data[4]), data[2], data[3])
 					self.frameElem.switch_to_content()
 					self.cmf.test_win_check_point("xpath", regrMsg, data, flag)
@@ -162,6 +164,7 @@ class testRegroup(object):
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
+					time.sleep(2)
 					self.regroup.regroup_click_basic_operation(int(data[4]), data[2], data[3])
 					if dataRow != 1 and dataRow != 2:
 						self.dptment.popup_sendkey(data[5])
@@ -172,7 +175,7 @@ class testRegroup(object):
 					self.dptment.click_ok_button()
 					self.frameElem.switch_to_content()
 					self.dptment.multil_div_check_point("xpath", regrMsg, data, flag, pagetext)
-					self.driver.implicitly_wait(20)
+					time.sleep(2)
 					self.frameElem.switch_to_content()
 					self.dptment.click_cancel_button()
 			except Exception as e:

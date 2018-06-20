@@ -30,6 +30,7 @@ class Department(object):
 
 	u'''左边框点击部门'''
 	def click_left_department(self):
+
 		self.frameElem.from_frame_to_otherFrame("leftFrame")
 		self.getElem.find_element_wait_and_click("id", "url0")
 
@@ -124,7 +125,6 @@ class Department(object):
 	       - end:id的后半段字符，可以不进行填写
 	'''
 	def click_basic_operation_public_method(self, deptname, first, end='no'):
-
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 
 		#获取所有a标签的对象
@@ -134,16 +134,19 @@ class Department(object):
 			elemtext = elem.get_attribute("title")
 			elemid = elem.get_attribute("id")
 			selemid = self.cnEn.cnCode(elemid)
+			time.sleep(2)
 
 			if deptname == elemtext:
 				self.getElem.find_element_wait_and_click("id", elemid)
+				time.sleep(2)
 
 				if end != 'no':
 					buttonid = first + filter(str.isdigit, selemid) + end
 				else:
 					buttonid = first + filter(str.isdigit, selemid)
-
+				time.sleep(2)
 				self.getElem.find_element_wait_and_click("id", buttonid)
+				time.sleep(2)
 				break
 
 	u'''在弹出框中填写内容
@@ -151,25 +154,28 @@ class Department(object):
 	       - deptname:输入填写的部门名称
 	'''
 	def popup_sendkey(self, deptname):
+		time.sleep(2)
 		self.frameElem.switch_to_content()
 		xpath = "/html/body/div[1]/div/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[2]/div/div[2]/input"
 		self.getElem.find_element_wait_and_sendkeys("xpath", xpath, deptname)
 
 	u'''点击确定按钮'''
 	def click_ok_button(self):
+		time.sleep(2)
 		self.frameElem.switch_to_content()
 		xpath = "/html/body/div[1]/div/table/tbody/tr[2]/td[2]/div/table/tbody/tr[3]/td/div/button[1]"
 		self.click_frame_public_method(u"消息", xpath)
 
 	u'''清空部门文本框内容'''
 	def clear_depart_text(self):
+		time.sleep(2)
 		self.frameElem.switch_to_content()
 		xpath = "/html/body/div[1]/div/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td[2]/div/div[2]/input"
 		self.getElem.find_element_wait_and_clear("xpath", xpath)
 
 	u'''点击取消按钮'''
 	def click_cancel_button(self):
-
+		time.sleep(2)
 		xpath = "/html/body/div[2]/div/table/tbody/tr[2]/td[2]/div/table/tbody/tr[3]/td/div/button[2]"
 		self.click_frame_public_method(u"消息", xpath)
 
@@ -185,7 +191,7 @@ class Department(object):
 	      - pagetext：页面弹框的title文本
 	'''
 	def frame_public_method(self, pagetext):
-
+		time.sleep(2)
 		self.frameElem.switch_to_content()
 		#获取title集合
 		divselems = self.driver.find_elements_by_class_name("aui_title")

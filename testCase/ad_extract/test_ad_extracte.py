@@ -136,6 +136,7 @@ class testAdEx():
 			self.check_without_pop_up(data[4],data)
 		#从过滤账号列表移动到AD发现账号列表
 		if dataRow == 4:
+
 			self.frameElem.from_frame_to_otherFrame("mainFrame")
 			self.adExElem.set_filter_account(data[3])
 			self.adExElem.click_filter_query_button()
@@ -176,7 +177,7 @@ class testAdEx():
 						self.adExElem.set_name_map(data[11])
 					self.adExElem.click_find_immdiate()
 					#判断测试项是否通过
-					self.driver.switch_to_default_content()
+					self.frameElem.switch_to_content()
 					self.cmf.test_win_check_point("xpath",self.login_msg(),data,flag)
 					self.frameElem.from_frame_to_otherFrame("mainFrame")
 					self.adExElem.del_node()

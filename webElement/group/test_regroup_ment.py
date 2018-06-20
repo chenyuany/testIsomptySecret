@@ -9,7 +9,7 @@
 #修改日期：
 #修改内容：
 '''
-import sys
+import sys,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.append("/testIsompSecret/common/")
@@ -29,11 +29,13 @@ class Regroup(object):
 
 	u'''左边框点击资源组'''
 	def click_left_regroup(self):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("leftFrame")
 		self.getElem.find_element_wait_and_click_EC("id", "url1")
 
 	u'''点击资源组展开按钮'''
 	def click_regroup_switch(self):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		self.getElem.find_element_wait_and_click_EC("id", "resource_group_1_switch")
 
@@ -44,6 +46,8 @@ class Regroup(object):
 	       - regroup:传入要被操作的资源组名称
 	'''
 	def regroup_click_basic_operation(self, operation, deptname='no', regroup='no'):
+		time.sleep(2)
+
 		if deptname != 'no':
 			self.dptment.click_basic_operation_public_method(deptname, "resource_group_", "_switch")
 		if operation == 0:
@@ -143,6 +147,7 @@ class Regroup(object):
 	       - deptname:传入要被操作的部门名称
 	'''
 	def click_regroup_add_resouce(self, regroup, deptname='no'):
+		time.sleep(2)
 
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		if deptname != 'no':
@@ -159,6 +164,7 @@ class Regroup(object):
 	       - deptname:传入要被操作的部门名称
 	'''
 	def click_regroup_bulk_resouce(self, regroup, deptname='no'):
+		time.sleep(2)
 
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		if deptname != 'no':
@@ -177,6 +183,7 @@ class Regroup(object):
 	       - deptname:传入要被操作的部门名称
 	'''
 	def click_regroup_del_resouce(self, regroup, rename, deptname='no'):
+		time.sleep(2)
 
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		if deptname != 'no':
@@ -201,6 +208,7 @@ class Regroup(object):
 			tdtext = tds[2].text
 			if tdtext == rename:
 				xpath = "/html/body/div/div[2]/div[7]/div/table/tbody/tr[" + str(line) + "]/td[6]/input"
+				time.sleep(2)
 				self.getElem.find_element_wait_and_click_EC("xpath", xpath)
 				break
 
@@ -232,6 +240,7 @@ class Regroup(object):
 
 	u'''点击资源组添加资源的检索按钮'''
 	def click_regroup_add_resouce_query(self):
+		time.sleep(2)
 
 		self.frameElem.from_frame_to_otherFrame("artIframe")
 		self.getElem.find_element_wait_and_click_EC("id", "quick_Resource")
@@ -271,6 +280,7 @@ class Regroup(object):
 	'''
 	def check_depart(self, deptname):
 		self.click_resource_depart_switch()
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("artIframe")
 		self.click_public_method(deptname, "user_tree_", "_check")
 

@@ -175,6 +175,7 @@ class PwdStrategy(object):
         try:
             self.frameElem.from_frame_to_otherFrame("mainFrame")
             revar_text = self.cnEnde.is_float(var_text)
+            time.sleep(2)
             var_elem =self.getElem.find_element_with_wait_EC('id',value)
             var_elem.clear()
             var_elem.send_keys(revar_text)

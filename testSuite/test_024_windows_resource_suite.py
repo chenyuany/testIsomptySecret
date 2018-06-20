@@ -43,10 +43,10 @@ class testWindowsResourceSuite(unittest.TestCase):
 		#------------------------------windows资源-----------------------------------
 		#添加windows资源
 		self.windows.add_windows_resource_001()
-		#编辑windows资源
-		self.windows.edit_windows_resource_002()
 		#校验windows资源
 		self.windows.check_windows_resource_003()
+		#编辑windows资源
+		self.windows.edit_windows_resource_002()
 		#添加和编辑windows资源账号
 		self.account.add_edit_resource_account_001(_testDataPath.WINDOWS_RESOURCE_TEST_DATA_URL, "add_windows_account")
 		#查询windows资源账号
@@ -63,7 +63,7 @@ class testWindowsResourceSuite(unittest.TestCase):
 		self.linuxresource.del_resource_005(_testDataPath.WINDOWS_RESOURCE_TEST_DATA_URL, "del_windows_resource")
 
 	def tearDown(self):
-		self.comsuit.windowre_module_post_condition()
+		self.comsuit.user_quit()
 
 		initDriver().close_driver(self.browser)
 

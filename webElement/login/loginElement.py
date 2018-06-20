@@ -148,6 +148,7 @@ class loginPage(object):
                 list : 登录用户列表信息
     '''
     def login(self,list):
+        time.sleep(2)
         self.frameElem.switch_to_content()
         self.set_login_method(list[2])
         self.set_login_username(list[3])

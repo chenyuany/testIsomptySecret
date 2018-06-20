@@ -17,8 +17,6 @@ sys.setdefaultencoding('utf-8')
 
 import os
 import time
-from selenium import webdriver
-from selenium.webdriver.support.ui import Select
 
 
 #导入通用模块
@@ -155,6 +153,7 @@ class AuthMethodPage():
 	'''    	
 	def set_common_var_text(self,var_text,value):
 		try:
+
 			self.frameElem.from_frame_to_otherFrame("mainFrame")
 			revar_text = self.cnEnde.is_float(var_text)
 			var_elem = self.getElem.find_element_with_wait_EC('id',value)
@@ -343,7 +342,7 @@ class AuthMethodPage():
 				data : 查找的用户账号
 	'''
 	def get_user_select_auth_text(self,data):
-		time.sleep(5)
+		time.sleep(3)
 		self.frameElem.from_frame_to_otherFrame("topFrame")
 		
 		self.cmf.select_menu(u"运维管理")
@@ -357,7 +356,6 @@ class AuthMethodPage():
 		edit_xpath = "//table[@id='content_table']/tbody/tr[" + str(user_row) + "]/td[9]/input[1]"
 		
 		self.getElem.find_element_with_wait_clickable_and_click('xpath',edit_xpath)
-		
 		self.frameElem.from_frame_to_otherFrame("mainFrame")
 
 		#点击高级选项

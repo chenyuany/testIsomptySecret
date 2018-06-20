@@ -296,6 +296,7 @@ class testApp():
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0 :
+
 					self.frameElem.from_frame_to_otherFrame("rigthFrame")
 					self.appElem.operate_account_del(data[3])
 					self.cmf.click_login_msg_button()

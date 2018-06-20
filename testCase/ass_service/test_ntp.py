@@ -11,7 +11,6 @@ u'''
 #修改内容：
 '''
 import sys
-import time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 

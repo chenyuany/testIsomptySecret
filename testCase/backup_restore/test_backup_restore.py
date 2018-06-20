@@ -9,7 +9,7 @@
 #修改日期：
 #修改内容：
 '''
-import sys
+import sys,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -59,6 +59,7 @@ class testBackupRestore(object):
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
+					time.sleep(3)
 					#编写syslog
 					self.backup.set_syslog(data[3], data[2])
 					#配置系统配置内容
@@ -102,7 +103,6 @@ class testBackupRestore(object):
 					#进行还原操作
 					self.backup.execute_restore(filename, data[10])
 					#进行用户信息是否存在
-					self.cmf.select_menu(u"运维管理", u"用户")
 					self.backup.check_content(data[3], "fortUserName", data[11])
 					#删除用户信息
 					self.backup.del_user_info(data[8])

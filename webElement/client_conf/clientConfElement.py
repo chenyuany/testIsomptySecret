@@ -72,6 +72,7 @@ class ClientPage():
     u'''点击检索按钮'''
     def click_query_button(self):
         try:
+            time.sleep(1)
             self.click_button_common('id',self.QUERY_BUTTON)
         except Exception as e:
             print("Click query button error: ") + str(e)

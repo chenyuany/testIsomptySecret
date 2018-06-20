@@ -78,7 +78,7 @@ class testAuthMethod(object):
 		all_auth_method = "all_globalAuthMethod"
 		#已选认证方式
 		selectd_auth_method = "select_globalAuthMethod"
-
+		self.frameElem.from_frame_to_otherFrame("mainFrame")
 		selem = self.getElem.find_element_with_wait("id",selectd_auth_method)
 		self.authMethod.selectd_all_method(selem,'2')
 		#日志开始记录

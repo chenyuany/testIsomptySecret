@@ -10,7 +10,7 @@ u'''
 #修改日期：
 #修改内容：
 '''
-import sys
+import sys,time
 reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.append("/testIsompSecret/common/")
@@ -77,6 +77,7 @@ class UseAuth():
     def add_authcode_name(self,authCode):
         try:
             self.getElem.find_element_wait_and_clear_EC('id',self.AUTHCODE)
+            time.sleep(1)
             return self.user.set_common_func(authCode,self.AUTHCODE)
         except Exception as e:
             print ("authCode error: ") + str(e)

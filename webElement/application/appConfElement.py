@@ -111,6 +111,7 @@ class AppPage():
         try:
             time.sleep(1)
             self.click_button_common('id',self.APP_MODULE)
+            time.sleep(1)
         except Exception as e:
             print ("Click app module button error: ") + str(e)
     
@@ -147,6 +148,7 @@ class AppPage():
     u'''点击重置按钮'''
     def click_reset_button(self):
         try:
+            time.sleep(2)
             self.click_button_common('id',self.RESET)
         except Exception as e:
             print ("Click reset button error: ") + str(e)
@@ -445,15 +447,3 @@ class AppPage():
             self.app_operate_list(name,"fortAccountName","2")
         except Exception as e:
             print("Click operation account del button fail") + str(e)
-        
-        
-
-
- 
-        
-    
-
-        
-        
-        
-        

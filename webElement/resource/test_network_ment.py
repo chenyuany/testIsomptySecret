@@ -74,7 +74,10 @@ class NetworkResource(object):
 			self.resource.set_super_pwd(data[12])
 			#确认口令
 			self.resource.set_super_confirm_pwd(data[13])
-		self.resource.click_save_button()
+		if data[5] != 'no':
+			self.resource.resoure_save_button()
+		else:
+			self.resource.click_save_button()
 
 	u'''校验网络设备资源
 	   Parameters:
@@ -108,7 +111,7 @@ class NetworkResource(object):
 			if data[7] != 'no':
 				self.resource.set_super_confirm_pwd(data[7])
 			self.resource.set_super_prompt()
-		self.resource.click_save_button()
+		self.resource.resoure_save_button()
 
 	u'''选择telnet登录模式
 	   Parameters:
