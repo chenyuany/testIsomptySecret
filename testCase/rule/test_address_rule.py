@@ -95,10 +95,6 @@ class testAddress(object):
 					self.frameElem.switch_to_content()
 					self.cmf.test_win_check_point("xpath", comrulMsg, data, flag)
 					self.command.click_back_command()
-					self.comsuit.switch_to_moudle(u'运维管理', u'用户')
-					self.adrerule.edit_user_address_rule(data[12], data[13])
-					self.comsuit.switch_to_moudle(u'运维管理', u'规则定义')
-					self.command.click_left_rule(2)
 			except Exception as e:
 				print ("add_address_rule fail:" + str(e))
 		self.comsuit.user_quit()
@@ -119,6 +115,10 @@ class testAddress(object):
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
+					self.comsuit.login_secadmin()
+					self.comsuit.switch_to_moudle(u'运维管理', u'用户')
+					self.adrerule.edit_user_address_rule(data[12], data[13])
+					self.comsuit.user_quit()
 					list = [data[14], data[15], data[16], data[17], data[18]]
 					self.loginElem.login(list)
 					self.frameElem.from_frame_to_otherFrame("topFrame")

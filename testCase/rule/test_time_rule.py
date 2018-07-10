@@ -84,11 +84,6 @@ class testTime(object):
 					self.frameElem.switch_to_content()
 					self.cmf.test_win_check_point("xpath", comrulMsg, data, flag)
 					self.command.click_back_command()
-					self.comsuit.switch_to_moudle(u'运维管理', u'用户')
-					self.timerule.edit_user_time_rule(data[13], data[14])
-					if dataRow != 5:
-						self.comsuit.switch_to_moudle(u'运维管理', u'规则定义')
-						self.command.click_left_rule(1)
 			except Exception as e:
 				print ("add_time_rule fail:" + str(e))
 		self.comsuit.user_quit()
@@ -111,7 +106,12 @@ class testTime(object):
 			try:
 				#如果不是第一行标题，则读取数据
 				if dataRow != 0:
+					self.comsuit.login_secadmin()
+					self.comsuit.switch_to_moudle(u'运维管理', u'用户')
+					self.timerule.edit_user_time_rule(data[13], data[14])
+
 					list = [data[15], data[16], data[17], data[18], data[19]]
+					self.comsuit.user_quit()
 					self.loginElem.login(list)
 					self.frameElem.from_frame_to_otherFrame("topFrame")
 					if self.getElem.is_element_exsit('id', "logout"):

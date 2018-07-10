@@ -65,6 +65,7 @@ class TimeRule(object):
             - starttime:启动日期
 	'''
 	def start_date(self, types, starttime=None):
+		time.sleep(2)
 		self.frameElem.from_frame_to_otherFrame("rigthFrame")
 		# 时间控件的fram的xpath
 		# fxpath = "//iframe[@hidefocus='true']"
@@ -232,12 +233,11 @@ class TimeRule(object):
 	'''
 	def select_depart_right_common(self, idname, swithid, deptname):
 		try:
+			time.sleep(2)
 			self.frameElem.from_frame_to_otherFrame("rigthFrame")
-			self.driver.implicitly_wait(10)
 			self.getElem.find_element_wait_and_click_EC('id', idname)
-			self.driver.implicitly_wait(10)
+			time.sleep(2)
 			self.getElem.find_element_wait_and_click_EC('id', swithid)
-			self.driver.implicitly_wait(10)
 
 			#获取所有a标签的对象
 			elems = self.driver.find_elements_by_tag_name("a")
@@ -298,6 +298,7 @@ class TimeRule(object):
 				#设定年
 				dTitle[1].clear()
 				dTitle[1].send_keys(tYear)
+				time.sleep(2)
 				self.frameElem.from_frame_to_otherFrame("rigthFrame")
 				if wdateId == "fortStartTime":
 					self.getElem.find_element_wait_and_click_EC("id", "fortStartTime")

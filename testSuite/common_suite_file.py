@@ -900,12 +900,12 @@ class CommonSuiteData():
         #使用系统管理员登录
         self.login_sysadmin()
         #添加用户
-        self.add_user_data_module([5,6,7,8])
+        self.add_user_data_module([5,6])
         #切换到组织定义
         self.switch_to_moudle(u"运维管理", u"组织定义")
 
     def usergroup_module_post_condition(self):
-        self.del_user_data_module([5,6,7,8])
+        self.del_user_data_module([5,6])
         self.user_quit()
 
 #------------------------------NTP服务前置条件---------------------------------
@@ -1024,9 +1024,9 @@ class CommonSuiteData():
         #配置最大登录数
         self.set_login_max_num()
         #添加登录用户数据
-        self.add_user_data_module([12,13,14,15,16,17])
+        self.add_user_data_module([16,17])
         #改变a的状态为关
-        self.userElem.change_user_status_off("gyrlogin2")
+        self.userElem.change_user_status_off("gyrloginad1")
         #系统管理员退出
         self.user_quit()
 
@@ -1036,7 +1036,7 @@ class CommonSuiteData():
         self.login_secadmin()
         #删除认证方式
         self.authElem.del_auth_method()
-        self.del_user_data_module([12,13,14,15,16,17])
+        self.del_user_data_module([16,17])
         self.user_quit()
 
 #------------------------------告警策略前置条件---------------------------------
@@ -1119,7 +1119,7 @@ class CommonSuiteData():
         self.user_quit()
         self.login_sysadmin()
         #添加授权用户
-        self.add_user_data_module([20,21,22,23,24])
+        self.add_user_data_module([20,21])
         self.add_res_group([1])
         self.add_user_group([1])
         self.user_quit()
@@ -1133,7 +1133,7 @@ class CommonSuiteData():
         self.login_sysadmin()
         self.del_res_group([1])
         self.del_user_group([1])
-        self.del_user_data_module([20,21,22,23,24])
+        self.del_user_data_module([20,21])
         self.user_quit()
 
 #------------------------------命令规则前置条件-----------------------------------
@@ -1168,27 +1168,27 @@ class CommonSuiteData():
     def timerule_module_prefix_condition(self):
         self.login_secadmin()
         #添加用户
-        self.add_user_data_module([26,27,28,29,30])
+        self.add_user_data_module([26,27])
         #切换到规则定义
         self.switch_to_moudle(u'运维管理', u'规则定义')
         self.command.click_left_rule(1)
 
     def timerule_module_post_condition(self):
         #删除用户
-        self.del_user_data_module([26,27,28,29,30])
+        self.del_user_data_module([26,27])
         self.user_quit()
 
 #------------------------------地址规则前置条件-----------------------------------
     def addressrule_module_prefix_condition(self):
         self.login_secadmin()
         #添加用户
-        self.add_user_data_module([31,32,33,34,35,36,37,38])
+        self.add_user_data_module([31,32])
         #切换到规则定义
         self.switch_to_moudle(u'运维管理', u'规则定义')
         self.command.click_left_rule(2)
 
     def addressrule_module_post_condition(self):
-        self.del_user_data_module([31,32,33,34,35,36,37,38])
+        self.del_user_data_module([31,32])
         self.user_quit()
 
 #------------------------------资源时间规则前置条件-----------------------------------
@@ -1329,99 +1329,4 @@ class CommonSuiteData():
         self.user_quit()
         self.login_sysadmin()
         self.del_user_data_module([49])
-        self.user_quit()
-
-#-----------------------------运维审计前置条件------------------------------
-    def audit_log_prefix_condition(self):
-        self.login_and_switch_to_dep()
-        self.add_user_data_module([43])
-        self.add_resource_modele([22])
-        self.add_res_account_module([20])
-        self.add_authorization_module([9])
-        self.switch_to_operation()
-        self.sso_module([1])
-        self.user_quit()
-        #新添加的运维管理员登录
-        self.sso_user_login(43)
-        self.sso_module([1])
-        #新添加的运维管理员退出
-        self.user_quit()
-        self.login_and_switch_to_sys()
-        self.switch_to_moudle(u"审计管理", u"运维审计")
-    
-    def audit_log_post_condition(self):
-        self.sys_switch_to_dep()
-        self.del_authorization_module([9])
-        self.del_resource_modele([22])
-        self.del_user_data_module([43])
-        self.user_quit()
-
-#------------------------------命令单点登录前置条件----------------------------
-    u'''单点登录前置条件'''
-    def sso_prefix_condition(self):
-        self.login_and_switch_to_dep()
-        self.add_resource_modele([1,3,4,5])
-        self.add_res_account_module([1,2,4,5,6,7])
-        self.add_authorization_module([1])
-        self.switch_to_operation()
-        #self.user_quit()
-        #self.login_and_switch_to_common()
-    
-    u'''单点登录后置条件'''
-    def sso_post_condition(self):
-        self.user_quit()
-        self.login_and_switch_to_dep()
-        self.del_resource_modele([1,3,4,5])
-        self.del_authorization_module([1])
-        self.user_quit()
-        
-#------------------------------windows单点登录前置条件-------------------------
-    u'''windows单点登录前置条件'''
-    def windows_sso_prefix_condition(self):
-        self.login_and_switch_to_sys()
-        #配置认证方式
-        self.add_meth_method()
-        self.add_user_data_module([42])
-        self.sys_switch_to_dep()
-        #self.login_and_switch_to_dep()
-        self.add_resource_modele([2,7,8])
-        self.add_res_account_module([3,9,10])
-        self.add_authorization_module([3,4])
-        self.switch_to_operation()
-        #self.user_quit()
-        #self.login_and_switch_to_common()
-    
-    u'''单点登录后置条件'''
-    def windows_sso_post_condition(self):
-        self.user_quit()
-        self.login_and_switch_to_dep()
-        self.del_authorization_module([3,4])
-        self.del_user_data_module([42])
-        self.del_resource_modele([8,7,2])
-        self.user_quit()
-        
-#------------------------------数据库单点登录前置条件-------------------------
-    u'''数据库单点登录前置条件'''
-    def database_sso_prefix_condition(self):
-        #使用公共用户登录系统
-        self.login_and_switch_to_sys()
-        #添加应用发布
-        self.add_application([2])
-        #添加客户端
-        self.add_client_module([1,2])
-        self.sys_switch_to_dep()
-        self.add_database_res_module([1,2,3])
-        self.add_res_account_module([11,12,13])
-        self.add_authorization_module([5])
-        self.switch_to_operation()
-    
-    u'''数据库单点登录后置条件'''
-    def database_sso_post_condition(self):
-        self.user_quit()
-        self.login_and_switch_to_dep()
-        self.del_authorization_module([5])
-        self.del_resource_modele([19,20,21])
-        self.dep_switch_to_sys()
-        self.del_application([2])
-        self.del_client_module([1,2])
         self.user_quit()
