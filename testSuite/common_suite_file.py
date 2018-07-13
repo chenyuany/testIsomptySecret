@@ -1224,7 +1224,7 @@ class CommonSuiteData():
     def process_module_prefix_condition(self):
         self.login_sysadmin()
         #添加用户
-        self.add_user_data_module([40,41,42,43,44])
+        self.add_user_data_module([40,41])
         self.user_quit()
         self.login_secadmin()
         #添加资源
@@ -1241,7 +1241,7 @@ class CommonSuiteData():
         self.user_quit()
         self.login_sysadmin()
         #删除用户
-        self.del_user_data_module([40,41,42,43,44])
+        self.del_user_data_module([40,41])
         self.user_quit()
 
 #------------------------------双人授权前置条件-----------------------------------

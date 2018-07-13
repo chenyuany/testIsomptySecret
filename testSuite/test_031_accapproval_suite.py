@@ -48,7 +48,7 @@ class testAccapprovalSuite(unittest.TestCase):
 		self.accapproval.access_query_process_task_006()
 		u'''访问审批个人历史查询'''
 		self.accapproval.access_query_personal_history_007()
-		# u'''访问审批申请历史查询'''
+		u'''访问审批申请历史查询'''
 		self.accapproval.access_query_apply_history_008()
 		u'''访问审批全部历史查询'''
 		self.accapproval.access_query_all_history_009()

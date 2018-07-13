@@ -118,11 +118,11 @@ class Dobapproval(object):
 
 	u'''调用新浏览器'''
 	def call_other_browsers(self):
-		newbrowser = webdriver.Ie()
+		newbrowser = webdriver.Edge()
 		# newbrowser = webdriver.Chrome()
 		#IE窗口最大化
 		newbrowser.maximize_window()
-		newbrowser.get("https://172.16.10.155")
+		newbrowser.get("https://172.16.10.65")
 		newbrowser.get("javascript:document.getElementById('overridelink').click();")
 		return newbrowser
 
@@ -150,8 +150,9 @@ class Dobapproval(object):
             - levelText3：3级菜单文本
     '''
 	def click_menu(self,newbrowser, levelText1, levelText2='no',levelText3='no'):
-
+		time.sleep(2)
 		self.remote_break_frame(newbrowser, "topFrame")
+		time.sleep(2)
 		#点击一级菜单
 		newbrowser.find_element_by_link_text(levelText1).click()
 		time.sleep(1)
@@ -206,6 +207,7 @@ class Dobapproval(object):
           - number:流程号
 	'''
 	def click_remote_approval_by_number(self, newbrowser, number):
+		time.sleep(2)
 		row = self.find_name_remote_by_row(newbrowser, number, "fortProcessInstanceId")
 		xpath = "/html/body/form/div/div[7]/div[2]/div/table/tbody/tr[" + str(row) + "]/td[8]/input[1]"
 		newbrowser.find_element_by_xpath(xpath).click()
@@ -217,6 +219,7 @@ class Dobapproval(object):
 	def process_remote_is_agree_approval(self, newbrowser, status):
 		statu = self.cnEn.is_float(status)
 		self.remote_break_frame(newbrowser, "mainFrame")
+		time.sleep(2)
 		if statu == '1':
 			newbrowser.find_element_by_id("yes").click()
 		elif statu == '2':
@@ -253,12 +256,16 @@ class Dobapproval(object):
             - frameName:要跳转到的frame的名字
 	'''
 	def remote_break_frame(self, newbrowser, frameName):
+		time.sleep(2)
 		newbrowser.switch_to_default_content()
 		newbrowser.switch_to_frame("content1")
+		time.sleep(2)
 		newbrowser.switch_to_frame(frameName)
+		time.sleep(2)
 
 	u'''点击退出'''
 	def remote_quit(self,newbrowser):
+		time.sleep(2)
 		self.remote_break_frame(newbrowser, "topFrame")
 		time.sleep(1)
 		newbrowser.find_element_by_id("logout").click()
@@ -321,7 +328,6 @@ class Dobapproval(object):
 				if dataRow != 0:
 					newbrowser = self.call_other_browsers()
 					self.user_remote_approval(newbrowser, data[1])
-					time.sleep(2)
 					self.click_menu(newbrowser, u"流程控制", u"流程任务")
 					self.click_remote_approval_by_number(newbrowser, number)
 					self.process_remote_is_agree_approval(newbrowser, data[2])

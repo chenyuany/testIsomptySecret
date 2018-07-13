@@ -193,6 +193,7 @@ class Accapproval(object):
 	def user_login(self, listuser):
 		users = listuser.split()
 		self.frameElem.switch_to_content()
+		time.sleep(2)
 		self.loginElem.set_login_method(users[0])
 		self.loginElem.set_login_username(users[1])
 		self.loginElem.set_login_pwd(users[2])
@@ -470,14 +471,14 @@ class Accapproval(object):
 			# 如果不是第1行,读取数据
 			if dataRow != 0:
 				self.user_login(data[1])
+				time.sleep(2)
 				self.frameElem.from_frame_to_otherFrame("topFrame")
 				self.cmf.select_menu(u"流程控制", u"流程任务")
-				if dataRow == 3 or dataRow == 4:
+				time.sleep(2)
+				if dataRow == 2 or dataRow == 3:
 					# 获取第一行数据的第1个字符
 					firststr = str(acpData[1][2])
-					# 获取第二行数据的第1个字符
-					secstr = str(acpData[2][2])
-					if firststr == '2.0' and secstr == '2.0':
+					if firststr == '2.0':
 						self.loginElem.quit()
 						self.log.log_detail(data[0], True)
 						continue

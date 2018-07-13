@@ -82,6 +82,7 @@ class testAccapproval(object):
 		self.cmf.click_login_msg_button()
 		#点击返回
 		self.authElem.approval_back_button()
+		self.loginElem.quit()
 		self.log.log_end("add_access_approvel")
 
 	u'''访问审批通过流程控制拒绝审批'''
@@ -99,7 +100,6 @@ class testAccapproval(object):
 				#如果不是第1行,读取数据
 				if dataRow != 0:
 					list = [data[9],data[10],data[11],data[12],data[13]]
-					self.loginElem.quit()
 					self.loginElem.login(list)
 					self.cmf.select_role_by_text(u"运维操作员")
 					self.acproval.send_access_approval_applicant(data)
