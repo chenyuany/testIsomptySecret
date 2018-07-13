@@ -1025,8 +1025,6 @@ class CommonSuiteData():
         self.set_login_max_num()
         #添加登录用户数据
         self.add_user_data_module([16,17])
-        #改变a的状态为关
-        self.userElem.change_user_status_off("gyrloginad1")
         #系统管理员退出
         self.user_quit()
 

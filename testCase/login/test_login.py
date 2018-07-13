@@ -12,6 +12,8 @@ from loginElement import loginPage
 sys.path.append("/testIsompSecret/common")
 from _icommon import commonFun
 from _log import log
+sys.path.append("/testIsompSecret/testSuite/common_suite_file/")
+from common_suite_file import CommonSuiteData
 
 class testLogin(object):
     
@@ -21,6 +23,7 @@ class testLogin(object):
         self.loginFun = loginPage(self.driver)
         self.cmf = commonFun(self.driver)
         self.dataFile = dataFileName()
+        self.comsuit = CommonSuiteData(self.driver)
 
     u'''获取测试数据
     	Parameters:
@@ -54,6 +57,10 @@ class testLogin(object):
                 #如果不是第一行标题，则读取数据
                 if dataRow != 0:
                     if sheetname == 'default':
+                        self.comsuit.login_secadmin()
+                        self.comsuit.switch_to_moudle(u'运维管理', u'用户')
+                        self.comsuit.userElem.change_user_status_off("gyrloginad1")
+                        self.comsuit.user_quit()
                         self.loginFun.login(data)
                     elif sheetname == 'ad':
                         self.loginFun.ad_login(data)
